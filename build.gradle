@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id "org.sonarqube" version "3.1.1"
+    id ("org.sonarqube") version "4.4.1.3373"
     id 'maven-publish'
 
 
@@ -14,20 +14,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-}
-
-sonarqube {
-    properties {
-        // SonarQube server configuration
-        property 'sonar.host.url', 'http://localhost:9000'
-        property 'sonar.login', 'admin'
-        property 'sonar.password', 'admin'
-
-        // Project information
-        property 'sonar.projectKey', 'tp'
-        property 'sonar.projectName', 'tp_jenkins'
-        property 'sonar.projectVersion', '1.0'
-    }
 }
 
 
