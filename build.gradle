@@ -7,7 +7,6 @@ plugins {
 
 }
 
-apply plugin: 'maven-publish'
 group 'com.example'
 version '1.0'
 
@@ -17,27 +16,14 @@ repositories {
     mavenCentral()
 }
 
-sonarqube {
-    properties {
-        // SonarQube server configuration
-        property 'sonar.host.url', 'http://localhost:9000'
-        property 'sonar.login', 'admin'
-        property 'sonar.password', 'admin'
-
-        // Project information
-        property 'sonar.projectKey', 'tp8'
-        property 'sonar.projectName', 'tp_jenkins'
-        property 'sonar.projectVersion', '1.0'
-    }
-}
 
 publishing {
     repositories {
         maven {
-            url 'https://mymavenrepo.com/repo/cEmjfkxugPlzLxXg1A2B/'
+            url System.getenv("url")
             credentials {
-                username 'myMavenRepo'
-                password 'test0005'
+                username System.getenv("username")
+                password System.getenv("password")
             }
         }
     }
@@ -60,5 +46,6 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:6.0.0'
     testImplementation 'junit:junit:4.12'
 }
+
 
 
