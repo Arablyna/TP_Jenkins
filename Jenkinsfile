@@ -11,6 +11,11 @@ pipeline {
                     }
        }
   }
+  stage('Test Reporting') {
+              steps {
+                cucumber 'reports/*json'
+              }
+            }
 
 }
 }
