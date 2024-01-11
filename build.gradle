@@ -25,8 +25,8 @@ sonarqube {
         property 'sonar.password', 'admin'
 
         // Project information
-        property 'sonar.projectKey', 'TP8'
-        property 'sonar.projectName', 'untitled'
+        property 'sonar.projectKey', 'tp8'
+        property 'sonar.projectName', 'tp_jenkins'
         property 'sonar.projectVersion', '1.0'
     }
 }
