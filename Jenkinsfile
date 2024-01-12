@@ -37,27 +37,12 @@ pipeline {
                      archiveArtifacts 'build/docs/'
                  }
              }
-        stage("Deploy & notification"){
-                   steps {
-                       bat './gradlew publish'
-                   }
-                   post {
-                         success {
-                              notifyEvents message: 'Success ',
-                              token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
-                              mail to: 'jl_arab@esi.dz',
-                              subject: "Success",
-                              body: "Deployment successful"
-                         }
-                         failure {
-                               notifyEvents message: 'Failure',
-                               token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
-                               mail to: 'jl_arab@esi.dz',
-                               subject: "Failure",
-                               body: "Something went wrong "
-                         }
-                   }
-               }
+        stage('Deploy') {
+                steps {
+                    echo "Deployment..."
+                    sh './gradlew publish'
+                }
+             }
 
 
 
