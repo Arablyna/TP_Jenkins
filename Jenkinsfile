@@ -49,17 +49,20 @@ pipeline {
                     notifyEvents message: 'Build is created with success', token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
                 }
                 post {
-                            success {
-                                mail to: "jl_arab@esi.dz",
-                                subject: "Build Succeeded",
-                                body: "This is an email that informs that the new Build is deployed with success!"
-                            }
-                            failure {
-                                mail to: "jl_arab@esi.dz",
-                                subject: "Build failed",
-                                body: "This is an email that informs that the new Build is deployed with failure!"
-                            }
-                }
+                                  success {
+                                       notifyEvents message: 'Success ',
+                                       token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
+                                       mail to: 'jl_arab@esi.dz',
+                                       subject: "Success",
+                                       body: "Deployment successful"
+                                  }
+                                  failure {
+                                        notifyEvents message: 'Failure',
+                                        token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
+                                        mail to: 'jl_arab@esi.dz',
+                                        subject: "Failure",
+                                        body: "Something went wrong "
+                                  }
            }
 
 }
