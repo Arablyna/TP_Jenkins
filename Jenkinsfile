@@ -63,6 +63,8 @@ pipeline {
                                         subject: "Failure",
                                         body: "Something went wrong "
                                   }
-           }
+                }
 
+}
+}
 }
