@@ -43,8 +43,11 @@ pipeline {
 
                 }
         }
-
-
-
-
+        stage('Notify') {
+                steps {
+                    echo "Notification..."
+                    notifyEvents message: 'Build is created with success', token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
+                }
+           }
+}
 }
