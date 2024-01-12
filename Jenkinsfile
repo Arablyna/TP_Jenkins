@@ -39,8 +39,8 @@ pipeline {
              }
         stage('Deploy') {
                 steps {
-                    echo "Deployment..."
-                    sh './gradlew publish'
+                   bat './gradlew publish'
+
                 }
              }
 
