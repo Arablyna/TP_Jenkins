@@ -42,20 +42,8 @@ pipeline {
                    bat './gradlew publish'
 
                 }
-             }
-        stage('Notification') {
-                parallel{
-                stage('Email Notification'){
-                steps {
-                    mail(subject: 'success notification', body: mail, cc: 'jl_arab@esi.dz', bcc: 'jl_arab@esi.dz')
-                }
-                }
-                stage('others Notification'){
-                steps{notifyEvents message: mail, token: 'whwnvf3djfhujrmgn4v_8royb_7dgor7'
-                }
-                }}
-            }
         }
+
 
 
 
