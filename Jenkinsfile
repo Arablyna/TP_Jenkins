@@ -1,15 +1,16 @@
 pipeline {
   agent any
   stages {
-  stage('Tests'){
-       steps{
-       bat './gradlew test'
-       junit 'test-results/test/*.xml'
-
-
-       }
-
-  }
+  stage("test"){
+        steps{
+            bat './gradlew test'
+            junit 'build/test-results/test/*.xml'
+            cucumber buildStatus: 'UNSTABLE',
+                            reportTitle: 'My report',
+                            fileIncludePattern: 'target/report.json',
+                            trendsLimit: 10
+        }
+      }
   stage('Test Reporting') {
               steps {
                 cucumber 'target/*.json'
