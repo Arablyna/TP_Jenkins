@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.util.Arrays;
+
 public class Matrix {
 
 	private int nrows;
@@ -42,8 +44,14 @@ public class Matrix {
 	}
 
 	public double[][] getValues() {
-		return data;
+		// Crée une copie des données pour éviter une modification directe de l'objet interne
+		double[][] copy = new double[nrows][ncols];
+		for (int i = 0; i < nrows; i++) {
+			System.arraycopy(data[i], 0, copy[i], 0, ncols);
+		}
+		return copy;
 	}
+
 
 	public void setValues(double[][] values) {
 		this.data = values;
@@ -76,6 +84,13 @@ public class Matrix {
 		return mat;
 	}
 
+	@Override
+	public int hashCode() {
+		int result = Arrays.deepHashCode(data);
+		result = 31 * result + nrows;
+		result = 31 * result + ncols;
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -94,7 +109,6 @@ public class Matrix {
 				}
 			}
 		}
-
 
 	return  true;
 

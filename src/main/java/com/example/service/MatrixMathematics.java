@@ -48,20 +48,20 @@ public class MatrixMathematics {
 	/**
 	 * Creates a submatrix excluding the given row and column
 	 * @param matrix
-	 * @param excluding_row
-	 * @param excluding_col
+	 * @param excludingRow
+	 * @param excludingCol
 	 * @return
 	 */
-	public static Matrix createSubMatrix(Matrix matrix, int excluding_row, int excluding_col) {
+	public static Matrix createSubMatrix(Matrix matrix, int excludingRow, int excludingCol) {
 		Matrix mat = new Matrix(matrix.getNrows()-1, matrix.getNcols()-1);
 		int r = -1;
-		for (int i=0;i<matrix.getNrows();i++) {
-			if (i==excluding_row)
+		for (int i = 0; i < matrix.getNrows(); i++) {
+			if (i == excludingRow)
 				continue;
-				r++;
+			r++;
 				int c = -1;
 			for (int j=0;j<matrix.getNcols();j++) {
-				if (j==excluding_col)
+				if (j==excludingCol)
 					continue;
 				mat.setValueAt(r, ++c, matrix.getValueAt(i, j));
 			}
@@ -115,12 +115,19 @@ public class MatrixMathematics {
 	 * @throws NoSquareException
 	 */
 	public static Matrix inverse(Matrix matrix) throws NoSquareException {
-		return (transpose(cofactor(matrix)).multiplyByConstant(1.0/determinant(matrix)));
+		double determinantValue = determinant(matrix);
+
+		if (determinantValue == 0.0) {
+			throw new NoSquareException("Matrix is singular and does not have an inverse.");
+		}
+
+		return transpose(cofactor(matrix)).multiplyByConstant(1.0 / determinantValue);
 	}
 
 
-	public  void test() {
 
+	public void test() {
+		// Add a nested comment
 	}
 
 
