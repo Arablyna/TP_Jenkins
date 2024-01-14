@@ -4,12 +4,11 @@ pipeline {
   stage('Tests'){
        steps{
        bat 'gradlew test'
+       junit 'test-results/test/*.xml'
+
+
        }
-       post {
-                    success{
-                    junit 'test-results/test/*.xml'
-                    }
-       }
+
   }
   stage('Test Reporting') {
               steps {
