@@ -7,13 +7,13 @@ pipeline {
        }
        post {
                     success{
-                    archiveArtifacts 'target/*.json'
+                    junit 'test-results/test/*.xml'
                     }
        }
   }
   stage('Test Reporting') {
               steps {
-                cucumber 'reports/*json'
+                cucumber 'target/*.json'
               }
             }
    stage("Code Analysis"){
